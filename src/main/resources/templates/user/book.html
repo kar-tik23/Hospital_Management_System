@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Appointment</title>
+</head>
+<body>
+<h2>Book Appointment</h2>
+
+<!-- ✅ Error Message -->
+<p th:if="${error}" th:text="${error}"></p>
+
+<!-- ✅ Success Message -->
+<p th:if="${param.success}">
+    Appointment booked successfully!
+</p>
+
+<form th:action="@{/user/book}" method="post" th:object="${appointment}">
+
+    <label>Select Doctor:</label>
+
+    <select th:field="*{doctor}" required>
+        <option th:each="d : ${doctors}"
+                th:value="${d.id}"
+                th:text="${d.name + ' - ' + d.specialization}">
+        </option>
+    </select>
+
+    <br><br>
+
+    <label>Date:</label>
+    <input type="date" th:field="*{date}" required>
+
+    <br><br>
+
+    <label>Time:</label>
+    <input type="time" th:field="*{time}" required>
+
+    <br><br>
+
+    <button type="submit">Book</button>
+
+</form>
+</body>
+</html>

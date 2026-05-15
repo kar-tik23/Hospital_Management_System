@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Manage Appointments</title>
+</head>
+<body>
+
+<h2>All Appointments</h2>
+<p th:if="${param.completed}">
+  Appointment completed successfully
+</p>
+
+<p th:if="${param.cancelled}">
+  Appointment cancelled successfully
+</p>
+
+<p th:if="${param.error}">
+  Invalid operation
+</p>
+
+<table border="1">
+
+  <tr>
+    <th>Patient</th>
+    <th>Doctor</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Token</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <tr th:each="a : ${appointments}">
+
+    <td th:text="${a.user.username}"></td>
+
+    <td th:text="${a.doctor.name}"></td>
+
+    <td th:text="${a.date}"></td>
+
+    <td th:text="${a.time}"></td>
+
+    <td th:text="${a.tokenNumber}"></td>
+
+    <td th:text="${a.status}"></td>
+
+    <td>
+
+      <a th:href="@{'/admin/complete/' + ${a.id}}">
+        Complete
+      </a>
+
+      |
+
+      <a th:href="@{'/admin/cancel/' + ${a.id}}">
+        Cancel
+      </a>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<br>
+
+<a href="/admin/dashboard">Back</a>
+
+</body>
+</html>
