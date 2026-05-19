@@ -1,19 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+    <title>User Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
+
 <body>
-<h1>User Dashboard</h1>
 
-<a href="/user/book">Book Appointment</a><br><br>
+<div class="blur-circle blur1"></div>
+<div class="blur-circle blur2"></div>
 
-<a href="/user/my">My Appointments</a><br><br>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-<a th:href="@{/user/queue/1}">
-    View Queue
-</a><br><br>
-<a href="/logout">Logout</a>
+
+<div class="container py-5">
+
+    <!-- HERO SECTION -->
+
+    <div class="glass-card mb-5">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+
+                <h1 class="display-5 fw-bold mb-3">
+                    Welcome Back 👋
+                </h1>
+
+                <p class="text-light opacity-75 fs-5">
+                    Manage your appointments, track queue status,
+                    and book doctor consultations easily.
+                </p>
+
+                <a th:href="@{/user/book}"
+                   class="custom-btn text-decoration-none mt-3 d-inline-block">
+
+                    <i class="bi bi-calendar-plus"></i>
+                    Book Appointment
+
+                </a>
+
+            </div>
+
+            <div class="col-lg-4 text-center">
+
+                <i class="bi bi-hospital"
+                   style="font-size:120px;color:#60a5fa;"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="glass-card stat-card">
+
+                <i class="bi bi-calendar2-check stat-icon"></i>
+
+                <h3 class="mt-3">Appointments</h3>
+
+                <p class="opacity-75">
+                    View and manage all your appointments.
+                </p>
+
+                <a th:href="@{/user/my}"
+                   class="text-info text-decoration-none">
+
+                    View More →
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="glass-card stat-card">
+
+                <i class="bi bi-person-badge stat-icon"></i>
+
+                <h3 class="mt-3">Doctors</h3>
+
+                <p class="opacity-75">
+                    Book appointments with available doctors.
+                </p>
+
+                <a th:href="@{/user/book}"
+                   class="text-info text-decoration-none">
+
+                    Book Now →
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="glass-card stat-card">
+
+                <i class="bi bi-people stat-icon"></i>
+
+                <h3 class="mt-3">Live Queue</h3>
+
+                <p class="opacity-75">
+                    Track real-time token queue updates.
+                </p>
+
+                <a href="/user/my"
+                   class="text-info text-decoration-none">
+
+                    Track Queue →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

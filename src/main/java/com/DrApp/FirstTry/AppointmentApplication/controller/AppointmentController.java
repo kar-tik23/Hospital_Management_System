@@ -81,43 +81,29 @@ public class AppointmentController {
 
 
 
+
     @GetMapping("/queue/{doctorId}")
-    public String queue(
+    public String queuePage(
             @PathVariable Long doctorId,
             Model model
     ) {
 
-        doctor doctor = doctorRepo.findById(doctorId).get();
+        doctor doctor = doctorRepo.findById(doctorId).orElse(null);
 
-        // Current token
-        appointment current = appointmentRepo
-                .findFirstByDoctorAndDateAndStatusOrderByTokenNumberAsc(
-                        doctor,
-                        LocalDate.now(),
-                        "BOOKED"
-                );
-
-        List<appointment> waiting;
-
-        if(current != null) {
-
-            waiting = appointmentRepo
-                    .findByDoctorAndDateAndStatusAndTokenNumberGreaterThanOrderByTokenNumberAsc(
-                            doctor,
-                            LocalDate.now(),
-                            "BOOKED",
-                            current.getTokenNumber()
-                    );
-
-        } else {
-
-            waiting = List.of();
+        if (doctor == null) {
+            return "redirect:/user/my";
         }
 
-        model.addAttribute("doctor", doctor);
-        model.addAttribute("current", current);
-        model.addAttribute("waiting", waiting);
+        List<appointment> queueList =
+                appointmentRepo
+                        .findByDoctorAndDateOrderByTokenNumberAsc(
+                                doctor,
+                                LocalDate.now()
+                        );
 
-        return "queue";
+        model.addAttribute("doctor", doctor);
+        model.addAttribute("queueList", queueList);
+
+        return "user/queue";
     }
 }

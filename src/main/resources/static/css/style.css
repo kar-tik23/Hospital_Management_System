@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:
+        radial-gradient(circle at top left,#2563eb33,transparent 25%),
+        radial-gradient(circle at bottom right,#7c3aed33,transparent 25%),
+        linear-gradient(135deg,#0f172a,#111827);
+
+    min-height:100vh;
+    color:white;
+    overflow-x:hidden;
+}
+.blur-circle{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(100px);
+    z-index:-1;
+}
+
+.blur1{
+    width:300px;
+    height:300px;
+    background:#2563eb55;
+    top:-100px;
+    left:-100px;
+}
+
+.blur2{
+    width:300px;
+    height:300px;
+    background:#7c3aed55;
+    bottom:-100px;
+    right:-100px;
+}
+
+/* NAVBAR */
+
+.glass-nav{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    padding:15px 40px;
+}
+
+.navbar-brand{
+    color:white !important;
+    font-weight:700;
+    font-size:24px;
+}
+
+.nav-link{
+    color:#e2e8f0 !important;
+    margin-left:20px;
+    transition:0.3s;
+}
+
+.nav-link:hover{
+    color:#60a5fa !important;
+}
+
+/* GLASS CARD */
+
+.glass-card{
+    background: rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* BUTTONS */
+
+.custom-btn{
+    background:#2563eb;
+    border:none;
+    padding:12px 25px;
+    border-radius:12px;
+    color:white;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.custom-btn:hover{
+    transform:translateY(-2px);
+    background:#1d4ed8;
+}
+
+.danger-btn{
+    background:#ef4444;
+}
+
+.success-btn{
+    background:#10b981;
+}
+
+/* TABLE */
+
+.custom-table{
+    color:white;
+}
+
+.custom-table th{
+    border-color:rgba(255,255,255,0.1);
+}
+
+.custom-table td{
+    border-color:rgba(255,255,255,0.05);
+}
+
+/* INPUTS */
+
+.form-control,
+.form-select{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    color:white;
+}
+
+.form-control:focus,
+.form-select:focus{
+    background:rgba(255,255,255,0.1);
+    color:white;
+    box-shadow:none;
+    border-color:#2563eb;
+}
+
+/* STAT CARDS */
+
+.stat-card{
+    transition:0.3s;
+    height:100%;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    border-color:#60a5fa55;
+}
+
+.stat-icon{
+    font-size:50px;
+    color:#60a5fa;
+}
